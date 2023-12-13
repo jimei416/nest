@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { env } from './config/index';
+
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { BookmarkModule } from './bookmark/bookmark.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(env.DATABASE_CONFIG)],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [AuthModule, UserModule, BookmarkModule],
 })
 export class AppModule {}
