@@ -1,6 +1,7 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthDto } from './dto';
 
 @ApiTags('应用系列接口')
 @Controller('api')
@@ -10,7 +11,9 @@ export class AuthController {
   @Post('signup')
   @ApiOperation({ summary: '返回hello' })
   @ApiResponse({ type: String })
-  signup() {
+  signup(@Body() ato: AuthDto) {
+    console.log({ ato });
+
     return this.appService.sigup();
   }
 
